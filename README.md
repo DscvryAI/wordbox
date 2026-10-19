@@ -2,7 +2,7 @@
 
 Where is the text? Every word a born-digital PDF draws, with its box on the page, read straight from the file. There's no model and no rendering: the text comes from the file's own records, and words and lines follow fixed spacing rules. Each page also gets a verdict: `text`, `garbled`, `invisible` or `none`.
 
-The write-up, with a demo you can try, is at https://sharadbapat.com/experiments/where-is-the-text/.
+The write-up, with a demo you can try, is at https://dscvryai.com/insights/where-is-the-text/.
 
 ## Output
 
@@ -28,7 +28,7 @@ A page is `invisible` when at least half its visible glyphs are drawn invisibly,
 
 ## Layout
 
-- `extractor/`: the library and the CLI (`wordbox-cli`). The PDF reading (object index, page tree, decryption, stream filters) and the fonts (font programs, encodings, CMaps, glyph outlines and their generated tables) are [pdf-core](https://github.com/sharad-bapat/pdf-core), shared with scan-or-text and where-are-the-regions. Clone it next to this repo: extractor/Cargo.toml gives it by path.
+- `extractor/`: the library and the CLI (`wordbox-cli`). The PDF reading (object index, page tree, decryption, stream filters) and the fonts (font programs, encodings, CMaps, glyph outlines and their generated tables) are [pdf-core](https://github.com/DscvryAI/pdf-core), shared with scan-or-text and where-are-the-regions. Clone it next to this repo: extractor/Cargo.toml gives it by path.
 - `wasm/`: the browser build, one call, `extract_json(bytes)`. It's a separate crate so the frozen extractor stays untouched.
 - `demo/`: the side-by-side demo. pdf.js 6.3.289 (Apache-2.0, bundled with its licence) draws the page, and wordbox boxes every word on top, with a thin green outline where its letters reach past the box.
 - `tools/`: checks, the reference builder, the garble set, scoring, the ink test and the samples. `bench/`: the pdf.js and WebAssembly timings.

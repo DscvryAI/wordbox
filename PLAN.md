@@ -1,6 +1,6 @@
 # wordbox: plan
 
-Where is the text? What text does this PDF contain, and exactly where is it drawn? (The page on sharadbapat.com will be "Where is the text?" at /experiments/where-is-the-text/.)
+Where is the text? What text does this PDF contain, and exactly where is it drawn? (The write-up on dscvryai.com will be "Where is the text?" at /insights/where-is-the-text/.)
 
 The third tool in a chain, after file-checker (what is this file?) and scan-or-text (does it need OCR?). For a born-digital PDF, the file already records every character it draws and where. This tool reads that record and reports it: every word, with its box on the page, and a verdict on whether the text layer can be trusted. It's fully deterministic. There's no model and nothing is inferred about meaning.
 
@@ -130,4 +130,4 @@ pdf.js (Apache-2.0) renders the page. It's the one runtime dependency, and it's 
 5. The verdict and the dev scoring loop, then freeze (done: results/chunk5-dev.txt, results/frozen.sha256, tools/check_frozen.py). On dev: 99.91% of 3.27M reference words found, all within 1 pt on x0, x1 and baseline; the verdict right on 100% of clean, pua and control pages and 0% of shift pages.
 6. Held-out run and the competitor benchmark. Because the consensus keeps only words both reference tools get right (chunk 4 found pdfplumber running space-less lines together and re-sorting overlapping glyphs), the benchmark also reports, on disputed words, which tool wordbox agrees with.
 7. WebAssembly build and the side-by-side demo with pdf.js (done). wasm/ is a separate crate (one call, extract_json) so the frozen extractor is untouched. demo/ loads a PDF or one of four made-up samples (tools/samples.py: letter, rotated, form, garbled), draws the page with pdf.js 6.3.289 (annotations drawn from their appearance streams, eval off), boxes every word on top, and lists the words by line beside it; hovering either lights up both. tools/demo_check.mjs drives it in headless Chrome in real time: all four samples draw, box, list and light up with no script errors. Limits: pdf.js's CJK maps and standard-font files aren't bundled (positions don't depend on them; glyph shapes for non-embedded fonts can differ), and slanted text gets an upright box around each word.
-8. README, then the write-up on sharadbapat.com (following WRITING.md).
+8. README, then the write-up on dscvryai.com (following WRITING.md).
